@@ -1,0 +1,296 @@
+%% LyX 2.2.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt,french,english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{graphicx}
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+
+\makeatother
+
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\makeatletter
+\addto\extrasfrench{%
+   \providecommand{\og}{\leavevmode\flqq~}%
+   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
+}
+
+\makeatother
+
+
+
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage{todonotes}
+\newcommand{\ioannis}[1]{\todo[inline,color=green!40,caption={}]{{\it Ioannis:~}#1}}
+\newcommand{\guillaume}[1]{\todo[inline,color=blue!40,caption={}]{{\it Guillaume:~}#1}}
+
+\newcommand{\gradpoints}[1]{\textcolor{red}{Graduates #1 pts}}
+\newcommand{\undergradpoints}[1]{\textcolor{orange}{Undergraduates #1 pts}}
+\newcommand{\question}[1]{\\ \textbf{Question.} #1 }
+
+% Switch this to false to hide answers
+\iftrue
+\newcommand{\answer}[1]{\\ \textbf{Answer.} #1 }
+\else 
+\newcommand{\answer}[1]{}
+\fi
+
+\usepackage[colorlinks=true]{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\ith}[1]{^{(#1)}}
+
+
+\begin{document}
+
+\setlength{\parskip}{0.3cm} \setlength{\parindent}{0cm}
+
+\begin{center}
+\textbf{IFT-3395/6390 Fundamentals of Machine Learning} \\
+\textbf{Professors: Guillaume Rabusseau / Ioannis Mitliagkas}
+\par\end{center}{\large \par}
+
+\begin{center}
+\textbf{\LARGE{Homework 0}} \\
+\textbf{\textit{Devoir 0}}
+\par\end{center}{\LARGE \par}
+
+
+
+
+\paragraph{}
+\begin{itemize}
+% \item This homework must be done in groups of 2 and submitted to Gradescope.
+% Only one of the teammates should submit the report but make sure to write the name of both team members on top of your report. Also make sure that both team members are on the submission on Gradescope.
+\item This homework must be done and submitted to Gradescope individually (you will not be collaborating with other students). \\
+\textit{Ce devoir doit être fait et envoyé sur Gradescope individuellement (pas de collaboration avec d'autres étudiants)}
+
+\item The theoretical part should be submitted as a pdf file.
+It should preferably be done in \LaTeX{} by copying this project (\texttt{Menu -> Copy Project}) and working off of this exact file.
+Still all \textbf{legible} solutions submitted as a pdf will be accepted.
+We reserve the right to penalize  solutions that are very hard to read, even if they are correct. \\
+\textit{La partie théorique doit être envoyée au format pdf. Il est recommandé de l'écrire en \LaTeX{}, en clônant le répertoire (\texttt{Menu -> Copy Project}) et en travaillant directement sur ce fichier. Toutefois, toute solution \textbf{lisible} au format pdf sera acceptée. Les solutions difficiles à lire pourront être pénalisées, même si elles sont justes}
+
+\item  The practical part should be coded in python (you can use the numpy and matplotlib libraries) and all code will be submitted as a python file to Gradescope. To enable automated code grading you should work off of the template file given in this homework folder. Do not modify the name of the file or any of the function signatures of the template file or the code grading will not work for you. You may, of course, add new functions and any regular python imports. \\
+\textit{La partie pratique doit être codée en python (avec les librairies numpy et matplotlib), et envoyée sur Gradescope sous fichier python. Pour permettre l'évaluation automatique, vous devez travailler directement sur le modèle donné dans le répertoire de ce devoir. Ne modifiez pas le nom du fichier ou aucune des fonctions signatures, sinon l'évaluation automatique ne fonctionnera pas. Vous pouvez bien sur ajouter de nouvelles fonctions et importations python}
+
+\item Any graphing, charts, or practical report parts should be submitted in a pdf to Gradescope.
+For the report it is recommended to use a Jupyter notebook, writing math with MathJax and export as pdf.
+You may alternatively write your report in \LaTeX{}; \LyX{}; Word.
+In any case, you should export your report to a pdf file that you will submit.
+You are of course encouraged to draw inspiration from what was done in lab sessions. \\
+\textit{Les figures, courbes et parties pratiques du rapport doivent être envoyées au format pdf sur Gradescope. Pour le rapport il est recommandé d'utiliser un Jupyter notebook, en écrivant les formules mathématiques avec MathJax et en exportant vers pdf. Vous pouvez aussi écrire votre rapport en \LaTeX{}; \LyX{}; Word. Dans tout les cas, exportez votre rapport vers un fichier pdf que vous enverrez. Vous êtes bien sur encouragés à vous inspirer de ce qui a été fait en TP.}
+
+\item NOTE: Many of the math questions can be answered by using online resources and automatic math solvers.
+This is perfectly fine if it helps you practice, but keep in mind that during the in-class exams you will not have access to those resources and automatic solvers. \\
+\textit{NOTE : Beaucoup des questions mathématiques peuvent être résolues en utilisant des ressources en ligne ou des solveurs automatiques. Ce n'est pas un problème si cela vous aide à progresser, mais gardez à l'esprit que pendant les examens en classe vous n'aurez pas accès à ces ressources et solveurs. }
+\end{itemize}
+ 
+\section{Theoretical Part (6 pts) \footnotesize{\textit{Partie Théorique}}}
+
+This part of the homework will not be graded for correctness. 
+You will still need to provide an answer and properly annotate it on Gradescope. 
+You get  1 point for each answer that you properly annotate, even if the answer itself is incorrect.
+We will provide you with solutions which you can use to check your answers. 
+The goal is for you to
+i) practice the process of annotating answers to questions on Gradescope and,
+ii) get an idea of what kind of basic math we will need during the class.
+If you are having trouble answering these questions you might be missing some important prerequisite knowledge for this class. \\
+\textit{
+Cette partie du devoir ne sera pas notée.
+Vous devez cependant fournir une réponse et l'annotée correctement sur Gradescope.
+Vous recevez 1 point pour chaque réponse que vous annotez correctement, même si la réponse n'est pas juste.
+Nous vous fournirons des solutions que pourrez utiliser pour vérifier vos réponses.
+Le but est que vous puissiez :
+i) vous familiariser avec le processus d'annotation de réponses sur Gradescope, et
+ii) obtenir une idée du genre de bases mathématiques nécessaires pour ce cours.
+Si vous avez des difficulté à répondre à ces questions, il vous manque peut être des pré-requis important pour suivre ce cours. 
+}
+
+\begin{enumerate}
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Let $X$ be a random variable representing the outcome of a single roll of a 6-sided dice.
+Show the steps for the calculation of
+i) the expectation of $X$ and
+ii) the variance of $X$. \\
+\textit{
+Soit $X$ une variable aléatoire représentant le résultat d'un lancer de dé à 6 faces. Montrez les étapes pour le calcul de 
+i) l'espérance de $X$ et
+ii) la variance de $X$.}}
+
+\subsection*{Answer i)} The expectation of $X$ being 
+$$\mathbb{E}[X] = \sum_{n=1}^{6}x_{i}p_{i} = 1 \cdot \frac{1}{6}+ 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6} = 3.5$$ 
+
+giving us the long-run average value of repetitions of rolling the die.
+
+\subsection*{Answer ii)} The variance of $X$ being 
+\begin{align*}
+    \text{Var}(X)\ &= \frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^2\\
+                   &= \frac{(1 - 3.5)^2 + (2 - 3.5)^2 + ... + (6 - 3.5)^2}{6}\\
+                   &\approx 2.92
+\end{align*}
+
+Giving us an average of how far each die value is from its mean.
+
+
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Let $u,v\in \mathbb{R}^d$ be two vectors and let $A\in\mathbb{R}^{n\times d}$ be a matrix. Give the formulas for the euclidean norm of $u$, for the euclidean inner product~(aka dot product) between $u$ and $v$, and for the matrix-vector product $Au$. \\
+\textit{Soit $u,v\in \mathbb{R}^d$ deux vecteurs et soit $A\in\mathbb{R}^{n\times d}$ une matrice. Donnez la formule pour la norme euclidienne de $u$, pour le produit scalaire euclidien (dot product) de $u$ et $v$, et pour le produit matrice-vecteur $Au$}}
+
+\subsection*{Answer 2)} Euclidean norm of $u$
+\begin{align*}
+||u|| = \sqrt{u_1^2 + u_2^2 + ... + u_n^2}\\
+\end{align*}
+Dot product defined as 
+\begin{align*}
+u \cdot v &= \sum_{n=1}^{d}u_n v_n\\
+            &= u_1 v_1 + ... + u_d v_d     
+\end{align*}
+Matrix-vector product A$u$ defined as 
+
+\begin{align*}
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} & ... & a_{1d}\\
+a_{21} & a_{22} & a_{23} & ... & a_{2d}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & a_{n3} & ... & a_{n d}
+\end{bmatrix}
+\begin{bmatrix}
+       u_{1} \\
+       u_{2} \\
+       \vdots\\
+       u_{d}
+     \end{bmatrix}
+&= \begin{bmatrix}
+a_{11}u_{1} + a_{12}u_{2} + a_{13}u_{3} + ... + a_{1d}u_{d}\\
+a_{21}u_{1} + a_{22}u_{2} + a_{23}u_{3} + ... + a_{2d}u{d}\\
+\vdots\\
+a_{n1}u_{1} + a_{n2}u_{2} + a_{n3}u_{3} + ... + a_{n d}u_{d}
+\end{bmatrix}
+\end{align*}
+
+
+
+
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Consider the two algorithms below. What do they compute and which algorithm is faster? \\
+\textit{Observez les deux algorithms ci-dessous. Que calculent-ils et lequel est le plus rapide ?}
+
+\begin{tabular}{ll}
+\textbf{ALGO1}(n) \hspace{4cm} & \textbf{ALGO2}(n) \\
+\texttt{result = $0$}     &  \texttt{return $(n+1)*n/2$}  \\ 
+\texttt{for $i=1\dots n$} & \\
+\texttt{\ \ result = result + $i$  } & \\
+\texttt{return result} &
+\end{tabular}
+}
+
+\item
+\undergradpoints{1}
+\gradpoints{1}
+\question{
+Give the step-by-step derivation of the following derivatives: \\
+\textit{Donnez les étapes de calculs des dérivées suivantes:}
+$$
+  \textrm{i)} \quad \frac{df}{dx}=?, \quad \textrm{where}\  f(x,\beta) = x^2 \exp{(-\beta x)} 
+$$
+$$
+  \textrm{ii)} \quad \frac{df}{d\beta}=?, \quad \textrm{where}\  f(x,\beta) = x \exp{(-\beta x)} 
+$$
+$$
+  \textrm{iii)} \quad \frac{df}{dx}=?, \quad \textrm{where}\  f(x) = \sin{(\exp{(x^2)})} 
+$$
+}
+
+\item
+\undergradpoints{1}
+\gradpoints{1}
+\question{
+Let $X\sim N(\mu,1)$, that is the random variable $X$ is distributed according to a Gaussian with mean $\mu$ and standard deviation $1$.
+Show how you can calculate the second moment of $X$, given by $\mathbb{E}[X^2]$. \\
+\textit{
+Soit $X\sim N(\mu,1)$, c'est à dire que $X$ est une variable aléatoire suivant une distribution gaussienne de moyenne $\mu$ et d'écart-type $1$. Montrez comment calculer le second moment de $X$, donné par $\mathbb{E}[X^2]$.
+}}
+
+
+
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Practical Part (7 pts) \footnotesize{\textit{Partie pratique}}}
+
+You should work off of the template file \texttt{solution.py} in the project and fill in the basic numpy functions using numpy and python methods \\
+\textit{Vous devez travailler sur le modèle \texttt{solution.py} du répertoire et compléter les fonctions basiques suivantes en utilisant numpy et python}
+
+
+
+\begin{enumerate}
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Create a numpy array from a python list \\
+\textit{Crée un tableau numpy à partir d'une liste python}}
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Create a numpy array of length 1 from a python number \\
+\textit{Crée un tableau numpy de taille 1 à partir d'un nombre python}}
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Sum two arrays elementwise \\
+\textit{Additionne deux tableaux élément par élément}}
+
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Sum an array and a number \\
+\textit{Additionne un tableau et un nombre}}
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Mutliple two arrays elementwise \\
+\textit{Multiplie deux tableaux élément par élément}}
+
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Dot product of two arrays \\
+\textit{Calcule le produit scalaire euclidien (dot product) de deux tableaux}}
+
+\item 
+\undergradpoints{1}
+\gradpoints{1}
+\question{Dot product of an array (1D) and a matrix (2D array) \\
+\textit{Calcule le produit scalaire euclidien (dot product) d'un tableau (1D) et d'une matrice (tableau 2D)}}
+
+\end{enumerate}
+
+\end{document}
