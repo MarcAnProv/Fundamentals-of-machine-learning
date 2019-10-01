@@ -1,4 +1,4 @@
-# Fundamentals-of-machine-learning
+# Fundamentals of machine learning
 
 This course is an introduction to machine learning (ML), a field of research in artificial intelligence. 
 
