@@ -26,4 +26,4 @@ Notions covered (indicative titles):
 * Convolutional neural netoworks
 * Recurrent neural networks
 
-For more info, see the [class website].(http://mitliagkas.github.io/ift6390-ml-class-2019/)
+For more info, see the [class website](http://mitliagkas.github.io/ift6390-ml-class-2019/).
