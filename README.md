@@ -1,6 +1,6 @@
 # Fundamentals-of-machine-learning
 
-This course is an introduction to machine learning (ML), a field of research in artificial intelligence. The purpose of ML algorithms is to enable the machine to learn from examples. The focus of the course is classification and regression: we observe a set of pairs (observation, target) where the target is eg. a class and we try to predict the target corresponding to a new observation. The classic applications of these algorithms are in the field of pattern recognition (characters, image, speech, etc.). In recent years, several new fields of application have emerged: data mining, statistical analysis of textual data, quantitative management of financial portfolios, analysis of genetic expressions, etc. The subject of the course can be exploited in many fields of computer science.
+This course is an introduction to machine learning (ML), a field of research in artificial intelligence. 
 
 The course will cover the following subjects: general notions (basic terminology, generalization, curse of dimensionality, capacity, classifier comparison), supervised algorithms (k-nearest neighbors, linear classifiers, neural networks, support vector machines, decision trees and regression, ensemble methods), unsupervised algorithms (principal component analysis, k-means method), overview of probabilistic graphical models.
 
@@ -25,3 +25,5 @@ Notions covered (indicative titles):
 * Introduction to deep learning
 * Convolutional neural netoworks
 * Recurrent neural networks
+
+For more info, see the [class website].(http://mitliagkas.github.io/ift6390-ml-class-2019/)
